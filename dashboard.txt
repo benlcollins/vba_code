@@ -1,0 +1,29 @@
+Dim Stopped As Boolean
+
+Sub startStopTimer()
+    If Range("timer.button.label") = "START" Then
+        Range("timer.button.label") = "STOP"
+        CurrentYear = 1900
+        'MsgBox CurrentYear
+        Stopped = False
+        Do Until Stopped Or CurrentYear = 2012
+            Application.Wait (Now + TimeValue("0:00:01"))
+            CurrentYear = CurrentYear + 4
+            Worksheets("dashboard").Range("AB9").Value = CurrentYear
+            DoEvents
+        Loop
+    Else
+        Stopped = True
+        Range("timer.button.label") = "START"
+    End If
+End Sub
+
+Sub ResetYear()
+    Worksheets("dashboard").Range("AB9").Value = 1900
+    Range("timer.button.label") = "START"
+End Sub
+
+Sub ChooseYear()
+    ChosenYear = Range("manual.year.choice")
+    Worksheets("dashboard").Range("AB9").Value = ChosenYear
+End Sub
