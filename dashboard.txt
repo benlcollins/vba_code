@@ -1,10 +1,9 @@
 Dim Stopped As Boolean
 
 Sub startStopTimer()
-    If Range("timer.button.label") = "START" Then
-        Range("timer.button.label") = "STOP"
+    If Range("start.button.label") = "START" Then
+        Range("start.button.label") = "STOP"
         CurrentYear = 1900
-        'MsgBox CurrentYear
         Stopped = False
         Do Until Stopped Or CurrentYear = 2012
             Application.Wait (Now + TimeValue("0:00:01"))
@@ -14,13 +13,13 @@ Sub startStopTimer()
         Loop
     Else
         Stopped = True
-        Range("timer.button.label") = "START"
+        Range("start.button.label") = "START"
     End If
 End Sub
 
 Sub ResetYear()
     Worksheets("dashboard").Range("G5").Value = 1900
-    Range("timer.button.label") = "START"
+    Range("start.button.label") = "START"
 End Sub
 
 Sub ChooseYear()
