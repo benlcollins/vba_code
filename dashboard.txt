@@ -9,7 +9,7 @@ Sub startStopTimer()
         Do Until Stopped Or CurrentYear = 2012
             Application.Wait (Now + TimeValue("0:00:01"))
             CurrentYear = CurrentYear + 4
-            Worksheets("dashboard").Range("AB9").Value = CurrentYear
+            Worksheets("dashboard").Range("G5").Value = CurrentYear
             DoEvents
         Loop
     Else
@@ -19,11 +19,11 @@ Sub startStopTimer()
 End Sub
 
 Sub ResetYear()
-    Worksheets("dashboard").Range("AB9").Value = 1900
+    Worksheets("dashboard").Range("G5").Value = 1900
     Range("timer.button.label") = "START"
 End Sub
 
 Sub ChooseYear()
     ChosenYear = Range("manual.year.choice")
-    Worksheets("dashboard").Range("AB9").Value = ChosenYear
+    Worksheets("dashboard").Range("G5").Value = ChosenYear
 End Sub
